@@ -80,7 +80,15 @@ describe Permoid::Base do
       TestPermalinkClass.field(:name, :type => Boolean)
       lambda do
         TestPermalinkClass.field_permalink(:name)
-      end.should raise_error(Permoid::ConfigurationError)
+      end.should raise_error(Permoid::ConfigurationError,
+                             'You need define a field_permalink with a field with type String')
+    end
+
+    it 'should raise a Permoid::ConfigurationError if field_permalink define is not a field already define in Mongoid' do
+      lambda do
+        TestPermalinkClass.field_permalink(:foo)
+      end.should raise_error(Permoid::ConfigurationError,
+                            'You need define a field_permalink already a field in your model')
     end
 
   end

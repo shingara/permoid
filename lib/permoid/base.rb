@@ -33,7 +33,8 @@ module Permoid
         end
 
         def self.field_permalink(field)
-          raise Permoid::ConfigurationError unless fields[field.to_s].type == ''.class
+          raise Permoid::ConfigurationError.new('You need define a field_permalink already a field in your model') unless fields.has_key?(field.to_s)
+          raise Permoid::ConfigurationError.new('You need define a field_permalink with a field with type String') unless fields[field.to_s].type == ''.class
           @@field_permalink = field
         end
       end
