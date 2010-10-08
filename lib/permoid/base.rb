@@ -8,6 +8,7 @@ module Permoid
 
         field                    :permalink
         before_validation        :set_permalink
+        index :permalink
 
         def set_permalink(permalink = nil)
           return if self.field_permalink.nil?
