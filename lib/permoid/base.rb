@@ -33,6 +33,7 @@ module Permoid
         end
 
         def self.field_permalink(field)
+          raise Permoid::ConfigurationError unless fields[field.to_s].type == ''.class
           @@field_permalink = field
         end
       end

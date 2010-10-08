@@ -76,6 +76,13 @@ describe Permoid::Base do
       test.to_param.should eql('name-permalink')
     end
 
+    it 'should not define a field_permalink not a String field' do
+      TestPermalinkClass.field(:name, :type => Boolean)
+      lambda do
+        TestPermalinkClass.field_permalink(:name)
+      end.should raise_error(Permoid::ConfigurationError)
+    end
+
   end
 
 end
