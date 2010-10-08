@@ -15,17 +15,16 @@ Add permalinks to your Mongoid Models
      class Testing
          include Mongoid::Document
          include Permoid::Base
-        
+
          field   :title
          validates_presence_of :title
+         field_permalink :title
      end
 
 Go roll !
 
-
-## Warning !
-
-Currently, the gem relies on the title field to build the permalink. There's no way to change that (yet).
+You define the field using by permalink with class method
+field_permalink.
 
 ## Contributing
 
@@ -42,3 +41,4 @@ And that's it! We'll soon take a look at your issue and review your changes.
 ## Credits
 
 Damien MATHIEU :: 42 (AT|CHEZ) dmathieu.com
+Cyril Mougel :: cyril.mougel@gmail.com
